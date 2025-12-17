@@ -7,17 +7,28 @@ import { Label } from "@/components/ui/label";
 import { DatePicker } from "@/components/ui/date-picker";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { format } from "date-fns";
 
 const subjects = ["Physics", "Mathematics", "Chemistry", "Computer Science", "History"];
 
 export default function SubmissionDatesPage() {
     const { toast } = useToast();
     const [date, setDate] = useState<Date | undefined>();
+    const [selectedSubject, setSelectedSubject] = useState('');
 
     const handleSetDeadline = () => {
+         if (!selectedSubject || !date) {
+            toast({
+                variant: "destructive",
+                title: "Incomplete Information",
+                description: "Please select a subject and pick a deadline date.",
+            });
+            return;
+        }
+
         toast({
             title: "Deadline Set",
-            description: `The new submission deadline has been set.`,
+            description: `The new submission deadline for ${selectedSubject} has been set to ${format(date, 'PPP')}.`,
         });
     }
 
@@ -32,7 +43,7 @@ export default function SubmissionDatesPage() {
             <CardContent className="space-y-4">
                 <div className="space-y-2">
                     <Label>Subject</Label>
-                    <Select>
+                    <Select onValueChange={setSelectedSubject} value={selectedSubject}>
                         <SelectTrigger>
                             <SelectValue placeholder="Select a subject" />
                         </SelectTrigger>

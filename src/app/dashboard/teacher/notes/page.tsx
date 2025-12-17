@@ -7,16 +7,29 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { Upload } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const subjects = ["Physics", "Mathematics", "Chemistry", "Computer Science", "History"];
 
 export default function NotesPage() {
     const { toast } = useToast();
+    const [selectedSubject, setSelectedSubject] = useState('');
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
 
     const handleUpload = () => {
+        if (!selectedSubject || !selectedFile) {
+            toast({
+                variant: "destructive",
+                title: "Incomplete Information",
+                description: "Please select a subject and choose a PDF file to upload.",
+            });
+            return;
+        }
+
         toast({
             title: "Notes Uploaded",
-            description: "The PDF has been successfully uploaded.",
+            description: `"${selectedFile.name}" for ${selectedSubject} has been successfully uploaded.`,
         });
     };
 
@@ -31,7 +44,7 @@ export default function NotesPage() {
             <CardContent className="space-y-4">
                 <div className="space-y-2">
                     <Label>Subject</Label>
-                    <Select>
+                    <Select onValueChange={setSelectedSubject} value={selectedSubject}>
                         <SelectTrigger>
                             <SelectValue placeholder="Select a subject" />
                         </SelectTrigger>
@@ -45,9 +58,10 @@ export default function NotesPage() {
                 <div className="space-y-2">
                     <Label>Notes PDF</Label>
                      <div className="flex w-full items-center space-x-2">
-                        <Input type="file" accept=".pdf" />
+                        <Input type="file" accept=".pdf" onChange={(e) => setSelectedFile(e.target.files ? e.target.files[0] : null)} />
                         <Button variant="outline" onClick={handleUpload}><Upload className="h-4 w-4 mr-2"/> Upload</Button>
                     </div>
+                    <p className="text-xs text-muted-foreground">Example: "Chapter_1_Introduction_to_Physics.pdf"</p>
                 </div>
             </CardContent>
         </Card>

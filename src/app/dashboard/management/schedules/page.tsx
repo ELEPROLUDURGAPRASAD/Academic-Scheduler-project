@@ -11,15 +11,45 @@ import { DatePicker } from '@/components/ui/date-picker';
 
 type Exam = { id: number; date: Date; subject: string; };
 
-const initialInternalExams: Exam[] = [
-    { id: 1, date: new Date(2024, 8, 15), subject: 'Internal Assessment 1 - Maths' },
-    { id: 2, date: new Date(2024, 8, 16), subject: 'Internal Assessment 1 - Physics' },
+// Semester 1 Exams
+const initialInternalExamsSem1: Exam[] = [
+    { id: 1, date: new Date(2024, 8, 15), subject: 'Mid-1: Maths' },
+    { id: 2, date: new Date(2024, 8, 16), subject: 'Mid-1: Physics' },
+    { id: 3, date: new Date(2024, 8, 17), subject: 'Mid-1: Chemistry' },
+    { id: 4, date: new Date(2024, 9, 10), subject: 'Lab Internals: Physics Lab' },
+    { id: 5, date: new Date(2024, 9, 11), subject: 'Lab Internals: Chemistry Lab' },
+    { id: 6, date: new Date(2024, 10, 20), subject: 'Mid-2: Maths' },
+    { id: 7, date: new Date(2024, 10, 21), subject: 'Mid-2: Physics' },
+    { id: 8, date: new Date(2024, 10, 22), subject: 'Mid-2: Chemistry' },
+    { id: 9, date: new Date(2024, 11, 5), subject: 'Lab Internals: Programming Lab' },
 ];
 
-const initialExternalExams: Exam[] = [
-    { id: 1, date: new Date(2024, 11, 10), subject: 'Final Exams - Chemistry' },
-    { id: 2, date: new Date(2024, 11, 12), subject: 'Final Exams - Computer Science' },
+const initialExternalExamsSem1: Exam[] = [
+    { id: 1, date: new Date(2024, 11, 15), subject: 'Semester Final: Maths' },
+    { id: 2, date: new Date(2024, 11, 17), subject: 'Semester Final: Physics' },
+    { id: 3, date: new Date(2024, 11, 19), subject: 'Semester Final: Chemistry' },
+    { id: 4, date: new Date(2024, 11, 21), subject: 'Semester Final: Computer Science' },
 ];
+
+// Semester 2 Exams
+const initialInternalExamsSem2: Exam[] = [
+    { id: 10, date: new Date(2025, 2, 10), subject: 'Mid-1: Data Structures' },
+    { id: 11, date: new Date(2025, 2, 11), subject: 'Mid-1: Digital Logic Design' },
+    { id: 12, date: new Date(2025, 2, 12), subject: 'Mid-1: Economics' },
+    { id: 13, date: new Date(2025, 3, 5), subject: 'Lab Internals: Data Structures Lab' },
+    { id: 14, date: new Date(2025, 4, 15), subject: 'Mid-2: Data Structures' },
+    { id: 15, date: new Date(2025, 4, 16), subject: 'Mid-2: Digital Logic Design' },
+    { id: 16, date: new Date(2025, 4, 17), subject: 'Mid-2: Economics' },
+    { id: 17, date: new Date(2025, 5, 1), subject: 'Lab Internals: Digital Logic Lab' },
+];
+
+const initialExternalExamsSem2: Exam[] = [
+    { id: 5, date: new Date(2025, 5, 20), subject: 'Semester Final: Data Structures' },
+    { id: 6, date: new Date(2025, 5, 22), subject: 'Semester Final: Digital Logic Design' },
+    { id: 7, date: new Date(2025, 5, 24), subject: 'Semester Final: Economics' },
+    { id: 8, date: new Date(2025, 5, 26), subject: 'Semester Final: Environmental Science' },
+];
+
 
 function ScheduleTable({ title, exams, setExams }: { title: string, exams: Exam[], setExams: React.Dispatch<React.SetStateAction<Exam[]>> }) {
     
@@ -79,27 +109,31 @@ function ScheduleTable({ title, exams, setExams }: { title: string, exams: Exam[
 
 
 export default function SchedulesPage() {
-    const [internalExams, setInternalExams] = useState(initialInternalExams);
-    const [externalExams, setExternalExams] = useState(initialExternalExams);
+    const [internalExamsSem1, setInternalExamsSem1] = useState(initialInternalExamsSem1);
+    const [externalExamsSem1, setExternalExamsSem1] = useState(initialExternalExamsSem1);
+    const [internalExamsSem2, setInternalExamsSem2] = useState(initialInternalExamsSem2);
+    const [externalExamsSem2, setExternalExamsSem2] = useState(initialExternalExamsSem2);
 
     return (
         <div className="space-y-6">
             <div>
                 <h2 className="text-2xl font-bold tracking-tight">Exam Schedules</h2>
                 <p className="text-muted-foreground">
-                    Manage schedules for internal and external examinations.
+                    Manage schedules for internal and external examinations for the academic year.
                 </p>
             </div>
-            <Tabs defaultValue="internal" className="w-full">
-                <TabsList>
-                    <TabsTrigger value="internal">Internal Exams</TabsTrigger>
-                    <TabsTrigger value="external">External Exams</TabsTrigger>
+            <Tabs defaultValue="sem1" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="sem1">Semester 1</TabsTrigger>
+                    <TabsTrigger value="sem2">Semester 2</TabsTrigger>
                 </TabsList>
-                <TabsContent value="internal">
-                    <ScheduleTable title="Internal Exam Schedule" exams={internalExams} setExams={setInternalExams} />
+                <TabsContent value="sem1" className="space-y-4">
+                    <ScheduleTable title="Internal Exams (Semester 1)" exams={internalExamsSem1} setExams={setInternalExamsSem1} />
+                    <ScheduleTable title="External Exams (Semester 1)" exams={externalExamsSem1} setExams={setExternalExamsSem1} />
                 </TabsContent>
-                <TabsContent value="external">
-                    <ScheduleTable title="External Exam Schedule" exams={externalExams} setExams={setExternalExams} />
+                <TabsContent value="sem2" className="space-y-4">
+                    <ScheduleTable title="Internal Exams (Semester 2)" exams={internalExamsSem2} setExams={setInternalExamsSem2} />
+                    <ScheduleTable title="External Exams (Semester 2)" exams={externalExamsSem2} setExams={setExternalExamsSem2} />
                 </TabsContent>
             </Tabs>
         </div>

@@ -21,6 +21,7 @@ import {
 export default function StudentViewPage() {
     const { toast } = useToast();
     const [lastFeedbackDate, setLastFeedbackDate] = useState<Date | null>(null);
+    const [isFeedbackDialogOpen, setIsFeedbackDialogOpen] = useState(false);
 
     const canGiveFeedback = () => {
         if (!lastFeedbackDate) return true;
@@ -33,7 +34,7 @@ export default function StudentViewPage() {
         if (canGiveFeedback()) {
             setLastFeedbackDate(new Date());
             toast({ title: "Feedback Submitted", description: "Thank you for your valuable feedback." });
-            // Close dialog logic would be here
+            setIsFeedbackDialogOpen(false);
         } else {
             toast({ title: "Feedback Limit", description: "You can only submit feedback once per month.", variant: "destructive" });
         }
@@ -47,7 +48,7 @@ export default function StudentViewPage() {
                     <p className="text-muted-foreground">4th Year, Computer Science (CSE)</p>
                 </div>
                 <div className="flex items-center gap-4">
-                     <Dialog>
+                     <Dialog open={isFeedbackDialogOpen} onOpenChange={setIsFeedbackDialogOpen}>
                         <DialogTrigger asChild>
                             <Button variant="outline">
                                 <MessageSquare className="mr-2 h-4 w-4" /> Give Feedback
@@ -80,15 +81,21 @@ export default function StudentViewPage() {
                             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="flex-col items-start gap-1">
-                                <p className="font-semibold">Holiday Tomorrow!</p>
-                                <p className="text-xs text-muted-foreground">Summer break starts tomorrow. No classes scheduled.</p>
+                                <p className="font-semibold text-blue-600">Event Reminder: Tech Fest "Innovate 2024"</p>
+                                <p className="text-xs text-muted-foreground">Starts in 2 days. Get ready for coding challenges and workshops!</p>
+                                <p className="text-xs text-muted-foreground self-end">1 hour ago</p>
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem className="flex-col items-start gap-1">
+                                <p className="font-semibold text-red-600">Holiday Tomorrow!</p>
+                                <p className="text-xs text-muted-foreground">The college is closed for Diwali. No classes scheduled.</p>
                                 <p className="text-xs text-muted-foreground self-end">1 day ago</p>
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="flex-col items-start gap-1">
-                                <p className="font-semibold">Internal Exams Approaching</p>
-                                <p className="text-xs text-muted-foreground">Your internal exams for Maths and Physics are in 3 days.</p>
-                               <p className="text-xs text-muted-foreground self-end">2 hours ago</p>
+                                <p className="font-semibold">Semester Exams Approaching</p>
+                                <p className="text-xs text-muted-foreground">Your final exams for Semester 1 start in 3 days.</p>
+                               <p className="text-xs text-muted-foreground self-end">2 days ago</p>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
