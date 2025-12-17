@@ -18,20 +18,30 @@ type MarkedDate = {
 };
 
 const exampleDates: MarkedDate[] = [
-    // Semester 1
+    // Semester 1 (2024)
     { date: new Date(2024, 7, 15), type: 'holiday', description: 'Independence Day' },
+    { date: new Date(2024, 7, 19), type: 'holiday', description: 'Raksha Bandhan' },
+    { date: new Date(2024, 7, 26), type: 'holiday', description: 'Janmashtami' },
     { date: new Date(2024, 8, 5), type: 'event', description: 'Teachers\' Day' },
+    { date: new Date(2024, 8, 7), type: 'holiday', description: 'Ganesh Chaturthi' },
     { date: new Date(2024, 9, 2), type: 'holiday', description: 'Gandhi Jayanti' },
+    { date: new Date(2024, 9, 12), type: 'holiday', description: 'Dussehra' },
     { date: new Date(2024, 9, 25), type: 'event', description: 'Tech Fest' },
     { date: new Date(2024, 10, 1), type: 'holiday', description: 'Diwali' },
+    { date: new Date(2024, 10, 15), type: 'holiday', description: 'Guru Nanak Jayanti' },
     { date: new Date(2024, 11, 25), type: 'holiday', description: 'Christmas' },
-    // Semester 2
-    { date: new Date(2025, 0, 1), type: 'holiday', description: 'New Year' },
+    // Semester 2 (2025)
+    { date: new Date(2025, 0, 1), type: 'holiday', description: 'New Year\'s Day' },
+    { date: new Date(2025, 0, 14), type: 'holiday', description: 'Makar Sankranti / Pongal' },
     { date: new Date(2025, 0, 26), type: 'holiday', description: 'Republic Day' },
     { date: new Date(2025, 1, 14), type: 'event', description: 'Cultural Fest' },
-    { date: new Date(2025, 2, 8), type: 'holiday', description: 'Holi' },
+    { date: new Date(2025, 1, 26), type: 'holiday', description: 'Maha Shivaratri' },
+    { date: new Date(2025, 2, 14), type: 'holiday', description: 'Holi' },
+    { date: new Date(2025, 2, 30), type: 'holiday', description: 'Eid-ul-Fitr' },
+    { date: new Date(2025, 3, 14), type: 'holiday', description: 'Ambedkar Jayanti' },
     { date: new Date(2025, 3, 18), type: 'holiday', description: 'Good Friday' },
     { date: new Date(2025, 4, 1), type: 'holiday', description: 'Labour Day' },
+    { date: new Date(2025, 4, 5), type: 'holiday', description: 'Buddha Purnima' },
 ];
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -89,6 +99,11 @@ export default function CalendarPage() {
                                 <h2 className="text-xl font-semibold">{format(currentMonth, 'MMMM yyyy')}</h2>
                                 <Button variant="ghost" size="icon" onClick={() => changeMonth(1)}><ChevronRight /></Button>
                             </div>
+                            <DialogTrigger asChild>
+                                <Button className="h-10 w-10 rounded-full shadow-lg" size="icon">
+                                    <Plus className="h-6 w-6" />
+                                </Button>
+                            </DialogTrigger>
                         </div>
                         <div className="flex gap-2 overflow-x-auto py-2">
                             {allMonths.map(month => (
@@ -183,12 +198,6 @@ export default function CalendarPage() {
                         </div>
                     </DialogFooter>
                 </DialogContent>
-
-                <DialogTrigger asChild>
-                    <Button className="absolute bottom-8 right-8 h-14 w-14 rounded-full shadow-lg" onClick={() => handleDateClick(new Date())}>
-                        <Plus className="h-8 w-8" />
-                    </Button>
-                </DialogTrigger>
             </Dialog>
         </div>
     );
