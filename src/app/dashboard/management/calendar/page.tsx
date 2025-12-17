@@ -18,30 +18,29 @@ type MarkedDate = {
 };
 
 const exampleDates: MarkedDate[] = [
-    // Semester 1 (2024)
-    { date: new Date(2024, 7, 15), type: 'holiday', description: 'Independence Day' },
-    { date: new Date(2024, 7, 19), type: 'holiday', description: 'Raksha Bandhan' },
-    { date: new Date(2024, 7, 26), type: 'holiday', description: 'Janmashtami' },
-    { date: new Date(2024, 8, 5), type: 'event', description: 'Teachers\' Day' },
-    { date: new Date(2024, 8, 7), type: 'holiday', description: 'Ganesh Chaturthi' },
-    { date: new Date(2024, 9, 2), type: 'holiday', description: 'Gandhi Jayanti' },
-    { date: new Date(2024, 9, 12), type: 'holiday', description: 'Dussehra' },
-    { date: new Date(2024, 9, 25), type: 'event', description: 'Tech Fest' },
-    { date: new Date(2024, 10, 1), type: 'holiday', description: 'Diwali' },
-    { date: new Date(2024, 10, 15), type: 'holiday', description: 'Guru Nanak Jayanti' },
-    { date: new Date(2024, 11, 25), type: 'holiday', description: 'Christmas' },
-    // Semester 2 (2025)
+    // User provided holidays for 2024-2025
     { date: new Date(2025, 0, 1), type: 'holiday', description: 'New Year\'s Day' },
     { date: new Date(2025, 0, 14), type: 'holiday', description: 'Makar Sankranti / Pongal' },
     { date: new Date(2025, 0, 26), type: 'holiday', description: 'Republic Day' },
-    { date: new Date(2025, 1, 14), type: 'event', description: 'Cultural Fest' },
-    { date: new Date(2025, 1, 26), type: 'holiday', description: 'Maha Shivaratri' },
     { date: new Date(2025, 2, 14), type: 'holiday', description: 'Holi' },
-    { date: new Date(2025, 2, 30), type: 'holiday', description: 'Eid-ul-Fitr' },
-    { date: new Date(2025, 3, 14), type: 'holiday', description: 'Ambedkar Jayanti' },
+    { date: new Date(2025, 2, 31), type: 'holiday', description: 'Eid-ul-Fitr' },
+    { date: new Date(2025, 3, 6), type: 'holiday', description: 'Ram Navami' },
+    { date: new Date(2025, 3, 14), type: 'holiday', description: 'Dr. B.R. Ambedkar Jayanti' },
     { date: new Date(2025, 3, 18), type: 'holiday', description: 'Good Friday' },
-    { date: new Date(2025, 4, 1), type: 'holiday', description: 'Labour Day' },
-    { date: new Date(2025, 4, 5), type: 'holiday', description: 'Buddha Purnima' },
+    { date: new Date(2025, 5, 7), type: 'holiday', description: 'Bakrid / Eid al Adha' },
+    { date: new Date(2024, 7, 15), type: 'holiday', description: 'Independence Day' },
+    { date: new Date(2024, 7, 16), type: 'holiday', description: 'Janmashtami' }, // Assuming Janmashtami is Aug 16, 2024 (user mentioned Aug 16)
+    { date: new Date(2024, 9, 2), type: 'holiday', description: 'Gandhi Jayanti / Vijaya Dashami' },
+    { date: new Date(2024, 9, 20), type: 'holiday', description: 'Diwali / Deepavali' },
+    { date: new Date(2024, 9, 21), type: 'holiday', description: 'Diwali Holiday' },
+    { date: new Date(2024, 10, 5), type: 'holiday', description: 'Guru Nanak Jayanti' },
+    { date: new Date(2024, 11, 25), type: 'holiday', description: 'Christmas Day' },
+    { date: new Date(2024, 11, 26), type: 'holiday', description: 'Boxing Day' },
+
+    // Existing Events
+    { date: new Date(2024, 8, 5), type: 'event', description: 'Teachers\' Day' },
+    { date: new Date(2024, 9, 25), type: 'event', description: 'Tech Fest' },
+    { date: new Date(2025, 1, 14), type: 'event', description: 'Cultural Fest' },
 ];
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
