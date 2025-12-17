@@ -53,7 +53,7 @@ export function DashboardLayout({ children, sidebarContent }: DashboardLayoutPro
                             <DropdownMenuItem>Support</DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem asChild>
-                                <Link href="/">Logout</Link>
+                                <Link href="/login">Logout</Link>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
