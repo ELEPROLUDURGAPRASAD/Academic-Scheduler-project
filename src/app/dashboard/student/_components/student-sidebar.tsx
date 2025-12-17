@@ -38,18 +38,18 @@ export function StudentSidebarNav() {
         <SidebarGroup>
             <SidebarGroupLabel>Teacher Section</SidebarGroupLabel>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/assignments')}>
-                <Link href="/dashboard/student/assignments"><FileText /> Assignments</Link>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/assignments/view')}>
+                <Link href="/dashboard/student/assignments/view"><FileText /> Assignments</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/notes')}>
-                <Link href="/dashboard/student/notes"><Upload /> Notes PDFs</Link>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/notes/view')}>
+                <Link href="/dashboard/student/notes/view"><Upload /> Notes PDFs</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/submissions')}>
-                <Link href="/dashboard/student/submissions"><CalendarClock /> Submission Dates</Link>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/submissions/view')}>
+                <Link href="/dashboard/student/submissions/view"><CalendarClock /> Submission Dates</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarGroup>
