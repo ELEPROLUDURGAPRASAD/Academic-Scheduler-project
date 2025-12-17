@@ -11,43 +11,43 @@ import { DatePicker } from '@/components/ui/date-picker';
 
 type Exam = { id: number; date: Date; subject: string; };
 
-// Semester 1 Exams
+// Semester 1 Exams (Example Year: 2024)
 const initialInternalExamsSem1: Exam[] = [
-    { id: 1, date: new Date(2024, 8, 15), subject: 'Mid-1: Maths' },
-    { id: 2, date: new Date(2024, 8, 16), subject: 'Mid-1: Physics' },
-    { id: 3, date: new Date(2024, 8, 17), subject: 'Mid-1: Chemistry' },
+    { id: 1, date: new Date(2024, 8, 15), subject: 'Mid-1: Engineering Mathematics-I' },
+    { id: 2, date: new Date(2024, 8, 16), subject: 'Mid-1: Engineering Physics' },
+    { id: 3, date: new Date(2024, 8, 17), subject: 'Mid-1: Basic Electrical Engineering' },
     { id: 4, date: new Date(2024, 9, 10), subject: 'Lab Internals: Physics Lab' },
-    { id: 5, date: new Date(2024, 9, 11), subject: 'Lab Internals: Chemistry Lab' },
-    { id: 6, date: new Date(2024, 10, 20), subject: 'Mid-2: Maths' },
-    { id: 7, date: new Date(2024, 10, 21), subject: 'Mid-2: Physics' },
-    { id: 8, date: new Date(2024, 10, 22), subject: 'Mid-2: Chemistry' },
-    { id: 9, date: new Date(2024, 11, 5), subject: 'Lab Internals: Programming Lab' },
+    { id: 5, date: new Date(2024, 9, 11), subject: 'Lab Internals: Electrical Engineering Lab' },
+    { id: 6, date: new Date(2024, 10, 20), subject: 'Mid-2: Engineering Mathematics-I' },
+    { id: 7, date: new Date(2024, 10, 21), subject: 'Mid-2: Engineering Physics' },
+    { id: 8, date: new Date(2024, 10, 22), subject: 'Mid-2: Basic Electrical Engineering' },
+    { id: 9, date: new Date(2024, 11, 5), subject: 'Lab Internals: Programming for Problem Solving Lab' },
 ];
 
 const initialExternalExamsSem1: Exam[] = [
-    { id: 1, date: new Date(2024, 11, 15), subject: 'Semester Final: Maths' },
-    { id: 2, date: new Date(2024, 11, 17), subject: 'Semester Final: Physics' },
-    { id: 3, date: new Date(2024, 11, 19), subject: 'Semester Final: Chemistry' },
-    { id: 4, date: new Date(2024, 11, 21), subject: 'Semester Final: Computer Science' },
+    { id: 1, date: new Date(2024, 11, 15), subject: 'Semester Final: Engineering Mathematics-I' },
+    { id: 2, date: new Date(2024, 11, 17), subject: 'Semester Final: Engineering Physics' },
+    { id: 3, date: new Date(2024, 11, 19), subject: 'Semester Final: Basic Electrical Engineering' },
+    { id: 4, date: new Date(2024, 11, 21), subject: 'Semester Final: Programming for Problem Solving' },
 ];
 
-// Semester 2 Exams
+// Semester 2 Exams (Example Year: 2025)
 const initialInternalExamsSem2: Exam[] = [
-    { id: 10, date: new Date(2025, 2, 10), subject: 'Mid-1: Data Structures' },
-    { id: 11, date: new Date(2025, 2, 11), subject: 'Mid-1: Digital Logic Design' },
-    { id: 12, date: new Date(2025, 2, 12), subject: 'Mid-1: Economics' },
-    { id: 13, date: new Date(2025, 3, 5), subject: 'Lab Internals: Data Structures Lab' },
-    { id: 14, date: new Date(2025, 4, 15), subject: 'Mid-2: Data Structures' },
-    { id: 15, date: new Date(2025, 4, 16), subject: 'Mid-2: Digital Logic Design' },
-    { id: 16, date: new Date(2025, 4, 17), subject: 'Mid-2: Economics' },
-    { id: 17, date: new Date(2025, 5, 1), subject: 'Lab Internals: Digital Logic Lab' },
+    { id: 10, date: new Date(2025, 2, 10), subject: 'Mid-1: Engineering Mathematics-II' },
+    { id: 11, date: new Date(2025, 2, 11), subject: 'Mid-1: Engineering Chemistry' },
+    { id: 12, date: new Date(2025, 2, 12), subject: 'Mid-1: Data Structures' },
+    { id: 13, date: new Date(2025, 3, 5), subject: 'Lab Internals: Chemistry Lab' },
+    { id: 14, date: new Date(2025, 4, 15), subject: 'Mid-2: Engineering Mathematics-II' },
+    { id: 15, date: new Date(2025, 4, 16), subject: 'Mid-2: Engineering Chemistry' },
+    { id: 16, date: new Date(2025, 4, 17), subject: 'Mid-2: Data Structures' },
+    { id: 17, date: new Date(2025, 5, 1), subject: 'Lab Internals: Data Structures Lab' },
 ];
 
 const initialExternalExamsSem2: Exam[] = [
-    { id: 5, date: new Date(2025, 5, 20), subject: 'Semester Final: Data Structures' },
-    { id: 6, date: new Date(2025, 5, 22), subject: 'Semester Final: Digital Logic Design' },
-    { id: 7, date: new Date(2025, 5, 24), subject: 'Semester Final: Economics' },
-    { id: 8, date: new Date(2025, 5, 26), subject: 'Semester Final: Environmental Science' },
+    { id: 5, date: new Date(2025, 5, 20), subject: 'Semester Final: Engineering Mathematics-II' },
+    { id: 6, date: new Date(2025, 5, 22), subject: 'Semester Final: Engineering Chemistry' },
+    { id: 7, date: new Date(2025, 5, 24), subject: 'Semester Final: Data Structures' },
+    { id: 8, date: new Date(2025, 5, 26), subject: 'Semester Final: Digital Logic Design' },
 ];
 
 

@@ -81,12 +81,6 @@ export default function StudentViewPage() {
                             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="flex-col items-start gap-1">
-                                <p className="font-semibold text-blue-600">Event Reminder: Tech Fest "Innovate 2024"</p>
-                                <p className="text-xs text-muted-foreground">Starts in 2 days. Get ready for coding challenges and workshops!</p>
-                                <p className="text-xs text-muted-foreground self-end">1 hour ago</p>
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem className="flex-col items-start gap-1">
                                 <p className="font-semibold text-red-600">Holiday Tomorrow!</p>
                                 <p className="text-xs text-muted-foreground">The college is closed for Diwali. No classes scheduled.</p>
                                 <p className="text-xs text-muted-foreground self-end">1 day ago</p>
@@ -96,6 +90,12 @@ export default function StudentViewPage() {
                                 <p className="font-semibold">Semester Exams Approaching</p>
                                 <p className="text-xs text-muted-foreground">Your final exams for Semester 1 start in 3 days.</p>
                                <p className="text-xs text-muted-foreground self-end">2 days ago</p>
+                            </DropdownMenuItem>
+                             <DropdownMenuSeparator />
+                            <DropdownMenuItem className="flex-col items-start gap-1">
+                                <p className="font-semibold text-blue-600">Event Reminder: Tech Fest "Innovate 2024"</p>
+                                <p className="text-xs text-muted-foreground">Starts in 2 days. Get ready for coding challenges and workshops!</p>
+                                <p className="text-xs text-muted-foreground self-end">1 hour ago</p>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>

@@ -18,9 +18,9 @@ type MarkedDate = {
 };
 
 const exampleDates: MarkedDate[] = [
-    // User provided holidays for 2024-2025
-    { date: new Date(2025, 0, 1), type: 'holiday', description: 'New Year\'s Day' },
-    { date: new Date(2025, 0, 14), type: 'holiday', description: 'Makar Sankranti / Pongal' },
+    // Holidays 2025
+    { date: new Date(2025, 0, 1), type: 'holiday', description: "New Year's Day" },
+    { date: new Date(2025, 0, 14), type: 'holiday', description: 'Makar Sankranti/Pongal' },
     { date: new Date(2025, 0, 26), type: 'holiday', description: 'Republic Day' },
     { date: new Date(2025, 2, 14), type: 'holiday', description: 'Holi' },
     { date: new Date(2025, 2, 31), type: 'holiday', description: 'Eid-ul-Fitr' },
@@ -28,18 +28,18 @@ const exampleDates: MarkedDate[] = [
     { date: new Date(2025, 3, 14), type: 'holiday', description: 'Dr. B.R. Ambedkar Jayanti' },
     { date: new Date(2025, 3, 18), type: 'holiday', description: 'Good Friday' },
     { date: new Date(2025, 5, 7), type: 'holiday', description: 'Bakrid / Eid al Adha' },
-    { date: new Date(2024, 7, 15), type: 'holiday', description: 'Independence Day' },
-    { date: new Date(2024, 7, 26), type: 'holiday', description: 'Janmashtami' },
-    { date: new Date(2024, 9, 2), type: 'holiday', description: 'Gandhi Jayanti' },
-    { date: new Date(2024, 9, 12), type: 'holiday', description: 'Vijaya Dashami' },
-    { date: new Date(2024, 10, 1), type: 'holiday', description: 'Diwali / Deepavali' },
-    { date: new Date(2024, 10, 15), type: 'holiday', description: 'Guru Nanak Jayanti' },
-    { date: new Date(2024, 11, 25), type: 'holiday', description: 'Christmas Day' },
+    { date: new Date(2025, 7, 15), type: 'holiday', description: 'Independence Day' },
+    { date: new Date(2025, 7, 26), type: 'holiday', description: 'Janmashtami' },
+    { date: new Date(2025, 9, 2), type: 'holiday', description: 'Gandhi Jayanti' },
+    { date: new Date(2025, 9, 12), type: 'holiday', description: 'Vijaya Dashami' },
+    { date: new Date(2025, 10, 1), type: 'holiday', description: 'Diwali / Deepavali' },
+    { date: new Date(2025, 10, 15), type: 'holiday', description: 'Guru Nanak Jayanti' },
+    { date: new Date(2025, 11, 25), type: 'holiday', description: 'Christmas Day' },
     
-    // Existing Events
-    { date: new Date(2024, 8, 5), type: 'event', description: 'Teachers\' Day' },
-    { date: new Date(2024, 9, 25), type: 'event', description: 'Tech Fest' },
+    // Existing Events 2025
     { date: new Date(2025, 1, 14), type: 'event', description: 'Cultural Fest' },
+    { date: new Date(2025, 8, 5), type: 'event', description: "Teachers' Day" },
+    { date: new Date(2025, 9, 25), type: 'event', description: 'Tech Fest' },
 ];
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -160,13 +160,11 @@ export default function CalendarPage() {
                         </div>
                     </CardContent>
                 </Card>
-
-                 <DialogTrigger asChild>
-                    <Button className="h-14 w-14 rounded-full shadow-lg absolute bottom-8 right-8" size="icon">
+                <DialogTrigger asChild>
+                     <Button className="h-14 w-14 rounded-full shadow-lg absolute bottom-8 right-8" size="icon">
                         <Plus className="h-8 w-8" />
                     </Button>
                 </DialogTrigger>
-
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Mark Date</DialogTitle>
