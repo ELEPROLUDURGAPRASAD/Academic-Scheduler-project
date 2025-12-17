@@ -25,9 +25,11 @@ const notesBySubject: Record<string, Note[]> = {
     "Computer Science": [
         { title: "Chapter 1: Introduction to Algorithms.pdf", url: "/placeholder.pdf" },
         { title: "Chapter 2: Data Structures.pdf", url: "/placeholder.pdf" },
+        { title: "Chapter 3: Operating Systems.pdf", url: "/placeholder.pdf" },
     ],
     "History": [
         { title: "Chapter 1: Ancient Civilizations.pdf", url: "/placeholder.pdf" },
+        { title: "Chapter 2: The Roman Empire.pdf", url: "/placeholder.pdf" },
     ]
 };
 

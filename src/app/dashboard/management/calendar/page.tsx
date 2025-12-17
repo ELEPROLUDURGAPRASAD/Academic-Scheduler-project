@@ -13,7 +13,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 
 type MarkedDate = {
     date: Date;
-    type: 'holiday' | 'event';
+    type: 'holiday' | 'event' | 'submission';
     description: string;
 };
 
@@ -40,6 +40,10 @@ const exampleDates: MarkedDate[] = [
     { date: new Date(2025, 1, 14), type: 'event', description: 'Cultural Fest' },
     { date: new Date(2025, 8, 5), type: 'event', description: "Teachers' Day" },
     { date: new Date(2025, 9, 25), type: 'event', description: 'Tech Fest' },
+
+    // Submission Dates 2025
+    { date: new Date(2025, 2, 28), type: 'submission', description: 'Physics Assignment Due' },
+    { date: new Date(2025, 4, 30), type: 'submission', description: 'Maths Assignment Due' },
 ];
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -58,7 +62,7 @@ export default function CalendarPage() {
         setIsDialogOpen(true);
     };
 
-    const addMarker = (type: 'holiday' | 'event') => {
+    const addMarker = (type: 'holiday' | 'event' | 'submission') => {
         if (selectedDate && description) {
             const newMarkedDates = markedDates.filter(d => format(d.date, 'yyyy-MM-dd') !== format(selectedDate, 'yyyy-MM-dd'));
             setMarkedDates([...newMarkedDates, { date: selectedDate, type, description }]);
@@ -148,6 +152,7 @@ export default function CalendarPage() {
                                                     className={cn(
                                                         "truncate text-white",
                                                         mark.type === 'event' && "bg-blue-500",
+                                                        mark.type === 'submission' && "bg-green-500",
                                                     )}
                                                 >
                                                     {mark.description}
@@ -184,16 +189,19 @@ export default function CalendarPage() {
                             />
                         </div>
                     </div>
-                    <DialogFooter className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                        <Button variant="destructive" onClick={removeMarker} disabled={!selectedDate || !markedDates.some(d => format(d.date, 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd'))} className="sm:col-span-1">
+                    <DialogFooter className="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                        <Button variant="destructive" onClick={removeMarker} disabled={!selectedDate || !markedDates.some(d => format(d.date, 'yyyy-MM-dd') === format(selectedDate!, 'yyyy-MM-dd'))} className="sm:col-span-1">
                             Remove
                         </Button>
-                        <div className="sm:col-span-2 grid grid-cols-2 gap-2">
-                            <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white" onClick={() => addMarker('event')} disabled={!selectedDate || !description}>
+                        <div className="sm:col-span-3 grid grid-cols-3 gap-2">
+                           <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white" onClick={() => addMarker('event')} disabled={!selectedDate || !description}>
                                 Mark as Event
                             </Button>
                             <Button variant="destructive" className="w-full" onClick={() => addMarker('holiday')} disabled={!selectedDate || !description}>
                                 Mark as Holiday
+                            </Button>
+                             <Button className="w-full bg-green-500 hover:bg-green-600 text-white" onClick={() => addMarker('submission')} disabled={!selectedDate || !description}>
+                                Mark as Submission
                             </Button>
                         </div>
                     </DialogFooter>
