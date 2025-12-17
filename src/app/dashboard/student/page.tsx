@@ -19,7 +19,7 @@ export default function StudentSetupPage() {
     };
 
     return (
-        <div className="flex min-h-[80vh] items-center justify-center">
+        <div className="flex min-h-[80vh] items-center justify-center p-4">
             <Card className="w-full max-w-lg">
                 <CardHeader>
                     <CardTitle>Welcome, Student!</CardTitle>

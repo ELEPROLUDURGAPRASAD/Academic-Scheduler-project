@@ -58,7 +58,7 @@ export function DashboardLayout({ children, sidebarContent }: DashboardLayoutPro
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </header>
-                <main className="flex-1 p-4 sm:p-6">
+                <main className="flex-1 p-4 sm:p-6 bg-muted/40">
                     {children}
                 </main>
             </SidebarInset>

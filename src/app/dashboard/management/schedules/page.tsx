@@ -61,7 +61,7 @@ function ScheduleTable({ title, exams, setExams }: { title: string, exams: Exam[
                                     <DatePicker date={exam.date} setDate={(newDate) => handleUpdate(exam.id, 'date', newDate || new Date())} />
                                 </TableCell>
                                 <TableCell>
-                                    <Input value={exam.subject} onChange={(e) => handleUpdate(exam.id, 'subject', e.target.value)} />
+                                    <Input placeholder="Enter subject and details" value={exam.subject} onChange={(e) => handleUpdate(exam.id, 'subject', e.target.value)} />
                                 </TableCell>
                                 <TableCell className="text-right">
                                     <Button variant="ghost" size="icon" onClick={() => handleRemoveRow(exam.id)}>

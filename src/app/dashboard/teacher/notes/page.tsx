@@ -6,10 +6,20 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Upload } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const subjects = ["Physics", "Mathematics", "Chemistry", "Computer Science", "History"];
 
 export default function NotesPage() {
+    const { toast } = useToast();
+
+    const handleUpload = () => {
+        toast({
+            title: "Notes Uploaded",
+            description: "The PDF has been successfully uploaded.",
+        });
+    };
+
     return (
         <Card>
             <CardHeader>
@@ -36,7 +46,7 @@ export default function NotesPage() {
                     <Label>Notes PDF</Label>
                      <div className="flex w-full items-center space-x-2">
                         <Input type="file" accept=".pdf" />
-                        <Button variant="outline"><Upload className="h-4 w-4 mr-2"/> Upload</Button>
+                        <Button variant="outline" onClick={handleUpload}><Upload className="h-4 w-4 mr-2"/> Upload</Button>
                     </div>
                 </div>
             </CardContent>

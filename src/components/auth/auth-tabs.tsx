@@ -14,10 +14,10 @@ import { ManagementAccessForm } from "./management-access-form";
 import { LoginForm } from "./login-form";
 
 export function AuthTabs() {
-  const [activeTab, setActiveTab] = useState("register");
+  const [activeTab, setActiveTab] = useState("login");
 
   return (
-    <Tabs defaultValue="register" className="w-full max-w-md" value={activeTab} onValueChange={setActiveTab}>
+    <Tabs defaultValue="login" className="w-full max-w-md" value={activeTab} onValueChange={setActiveTab}>
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="register">Register</TabsTrigger>
         <TabsTrigger value="login">Login</TabsTrigger>
@@ -27,31 +27,20 @@ export function AuthTabs() {
           <CardHeader>
             <CardTitle>Create an Account</CardTitle>
             <CardDescription>
-              Choose your role to get started.
+              Choose your role to get started. Only for Students and Teachers.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <StudentTeacherRegisterForm onLoginClick={() => setActiveTab("login")} />
-            <div className="relative my-6">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">
-                  Or
-                </span>
-              </div>
-            </div>
-            <ManagementAccessForm />
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="login">
         <Card>
           <CardHeader>
-            <CardTitle>Login</CardTitle>
+            <CardTitle>Login to Your Account</CardTitle>
             <CardDescription>
-              Access your dashboard.
+              Select your role and enter your credentials to access your dashboard.
             </CardDescription>
           </CardHeader>
           <CardContent>

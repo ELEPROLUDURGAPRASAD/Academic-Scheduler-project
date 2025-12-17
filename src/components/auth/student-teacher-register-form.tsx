@@ -62,7 +62,8 @@ export function StudentTeacherRegisterForm({ onLoginClick }: StudentTeacherRegis
       title: "Registration Successful",
       description: `Welcome, ${values.name}! Please login to continue.`,
     });
-    router.push(`/dashboard/${values.role}`);
+    // In a real app, you wouldn't auto-redirect. Here we do for demo purposes.
+    onLoginClick();
   }
 
   return (

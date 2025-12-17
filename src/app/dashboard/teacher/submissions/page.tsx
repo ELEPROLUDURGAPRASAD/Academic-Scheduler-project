@@ -6,11 +6,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { DatePicker } from "@/components/ui/date-picker";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const subjects = ["Physics", "Mathematics", "Chemistry", "Computer Science", "History"];
 
 export default function SubmissionDatesPage() {
+    const { toast } = useToast();
     const [date, setDate] = useState<Date | undefined>();
+
+    const handleSetDeadline = () => {
+        toast({
+            title: "Deadline Set",
+            description: `The new submission deadline has been set.`,
+        });
+    }
 
     return (
         <Card>
@@ -38,7 +47,7 @@ export default function SubmissionDatesPage() {
                     <Label>Submission Deadline</Label>
                     <DatePicker date={date} setDate={setDate} />
                 </div>
-                <Button>Set Deadline</Button>
+                <Button onClick={handleSetDeadline}>Set Deadline</Button>
             </CardContent>
         </Card>
     );

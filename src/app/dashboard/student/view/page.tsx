@@ -7,6 +7,16 @@ import { Bell, Calendar, FileText, GanttChartSquare, MessageSquare, Presentation
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import Link from 'next/link';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 
 export default function StudentViewPage() {
     const { toast } = useToast();
@@ -23,6 +33,7 @@ export default function StudentViewPage() {
         if (canGiveFeedback()) {
             setLastFeedbackDate(new Date());
             toast({ title: "Feedback Submitted", description: "Thank you for your valuable feedback." });
+            // Close dialog logic would be here
         } else {
             toast({ title: "Feedback Limit", description: "You can only submit feedback once per month.", variant: "destructive" });
         }
@@ -55,10 +66,32 @@ export default function StudentViewPage() {
                             </DialogFooter>
                         </DialogContent>
                     </Dialog>
-                    <Button variant="ghost" size="icon" className="rounded-full relative">
-                        <Bell className="h-5 w-5" />
-                        <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-destructive" />
-                    </Button>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="icon" className="rounded-full relative">
+                                <Bell className="h-5 w-5" />
+                                <span className="absolute top-0 right-0 flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive"></span>
+                                </span>
+                            </Button>
+                        </DropdownMenuTrigger>
+                         <DropdownMenuContent align="end" className="w-80">
+                            <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem className="flex-col items-start gap-1">
+                                <p className="font-semibold">Holiday Tomorrow!</p>
+                                <p className="text-xs text-muted-foreground">Summer break starts tomorrow. No classes scheduled.</p>
+                                <p className="text-xs text-muted-foreground self-end">1 day ago</p>
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem className="flex-col items-start gap-1">
+                                <p className="font-semibold">Internal Exams Approaching</p>
+                                <p className="text-xs text-muted-foreground">Your internal exams for Maths and Physics are in 3 days.</p>
+                               <p className="text-xs text-muted-foreground self-end">2 hours ago</p>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
             </header>
 
@@ -70,9 +103,9 @@ export default function StudentViewPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Button variant="secondary" className="w-full justify-start"><Calendar className="mr-2 h-4 w-4" /> View Timetable</Button>
-                        <Button variant="secondary" className="w-full justify-start"><GanttChartSquare className="mr-2 h-4 w-4" /> View Holidays & Events</Button>
-                        <Button variant="secondary" className="w-full justify-start"><Presentation className="mr-2 h-4 w-4" /> View Exam Schedules</Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/management/timetable"><Calendar className="mr-2 h-4 w-4" /> View Timetable</Link></Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/management/calendar"><GanttChartSquare className="mr-2 h-4 w-4" /> View Holidays & Events</Link></Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/management/schedules"><Presentation className="mr-2 h-4 w-4" /> View Exam Schedules</Link></Button>
                     </CardContent>
                 </Card>
                 <Card>
@@ -82,9 +115,9 @@ export default function StudentViewPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Button variant="secondary" className="w-full justify-start"><FileText className="mr-2 h-4 w-4" /> View Assignments</Button>
-                        <Button variant="secondary" className="w-full justify-start"><Upload className="mr-2 h-4 w-4" /> Download Notes</Button>
-                        <Button variant="secondary" className="w-full justify-start"><CalendarClock className="mr-2 h-4 w-4" /> View Submission Dates</Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/teacher/assignments"><FileText className="mr-2 h-4 w-4" /> View Assignments</Link></Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/teacher/notes"><Upload className="mr-2 h-4 w-4" /> Download Notes</Link></Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/teacher/submissions"><CalendarClock className="mr-2 h-4 w-4" /> View Submission Dates</Link></Button>
                     </CardContent>
                 </Card>
             </div>

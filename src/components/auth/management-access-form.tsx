@@ -39,7 +39,6 @@ export function ManagementAccessForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      // In a real app, you would also create the user account here.
       // The password would be generated securely on the server.
       const generatedPassword = Math.random().toString(36).slice(-8);
       
@@ -53,8 +52,8 @@ export function ManagementAccessForm() {
           title: "Credentials Sent",
           description: result.message,
         });
-        // Redirect to login or a page that says "check your email"
-        router.push('/dashboard/management');
+        // This is a placeholder for a better UX, like redirecting to a "check your email" page
+        form.reset();
       } else {
         throw new Error(result.message);
       }
@@ -89,14 +88,14 @@ export function ManagementAccessForm() {
                 </div>
               </FormControl>
               <FormDescription>
-                We'll email you credentials to access the management dashboard.
+                We'll email you temporary credentials to access the management dashboard.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Sending..." : "Get Credentials"}
+          {isLoading ? "Sending Credentials..." : "Request Access"}
         </Button>
       </form>
     </Form>

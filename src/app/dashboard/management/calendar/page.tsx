@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { PartyPopper, Briefcase } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type MarkedDate = {
     date: Date;
@@ -37,19 +38,15 @@ export default function CalendarPage() {
         if (selectedDate) {
             const existing = markedDates.find(d => format(d.date, 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd'));
             setDescription(existing?.description || '');
+        } else {
+            setDescription('');
         }
     }
 
     const modifiers = {
         holiday: markedDates.filter(d => d.type === 'holiday').map(d => d.date),
         event: markedDates.filter(d => d.type === 'event').map(d => d.date),
-        sunday: { dayOfWeek: [0] },
-    };
-
-    const modifiersStyles = {
-        holiday: { color: 'var(--destructive-foreground)', backgroundColor: 'hsl(var(--destructive))' },
-        event: { color: 'var(--accent-foreground)', backgroundColor: 'hsl(var(--accent))' },
-        sunday: { color: 'var(--destructive-foreground)', backgroundColor: 'hsl(var(--destructive))' },
+        sunday: { dayOfWeek: [0] as const },
     };
 
     return (
@@ -58,7 +55,7 @@ export default function CalendarPage() {
                 <Card>
                     <CardHeader>
                         <CardTitle>Academic Calendar</CardTitle>
-                        <CardDescription>Select a date to mark it as a holiday or an event.</CardDescription>
+                        <CardDescription>Select a date to mark it as a holiday or an event. Sundays are default holidays.</CardDescription>
                     </CardHeader>
                     <CardContent className="flex justify-center">
                         <Calendar
@@ -66,13 +63,11 @@ export default function CalendarPage() {
                             selected={date}
                             onSelect={onDateSelect}
                             modifiers={modifiers}
-                            modifiersClassNames={
-                                {
-                                    holiday: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-                                    event: 'bg-accent text-accent-foreground hover:bg-accent/90',
-                                    sunday: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-                                }
-                            }
+                            modifiersClassNames={{
+                                holiday: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+                                event: "bg-blue-500 text-white hover:bg-blue-600",
+                                sunday: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+                            }}
                             className="rounded-md border"
                         />
                     </CardContent>
@@ -94,11 +89,12 @@ export default function CalendarPage() {
                                 placeholder="e.g., Annual Sports Day"
                                 value={description}
                                 onChange={e => setDescription(e.target.value)}
+                                disabled={!date}
                             />
                         </div>
                         <div className="flex gap-2">
-                            <Button className="w-full" onClick={() => addMarker('event')}>Mark as Event</Button>
-                            <Button variant="destructive" className="w-full" onClick={() => addMarker('holiday')}>Mark as Holiday</Button>
+                            <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white" onClick={() => addMarker('event')} disabled={!date || !description}>Mark as Event</Button>
+                            <Button variant="destructive" className="w-full" onClick={() => addMarker('holiday')} disabled={!date || !description}>Mark as Holiday</Button>
                         </div>
                     </CardContent>
                 </Card>
@@ -116,7 +112,7 @@ export default function CalendarPage() {
                                         <p className="font-semibold">{d.description}</p>
                                         <p className="text-sm text-muted-foreground">{format(d.date, 'PPP')}</p>
                                     </div>
-                                    <Badge variant={d.type === 'holiday' ? 'destructive' : 'default'}>
+                                    <Badge variant={d.type === 'holiday' ? 'destructive' : 'default'} className={cn(d.type === 'event' && 'bg-blue-500 text-white')}>
                                         {d.type === 'holiday' ? <Briefcase className="mr-2 h-4 w-4" /> : <PartyPopper className="mr-2 h-4 w-4" />}
                                         {d.type}
                                     </Badge>

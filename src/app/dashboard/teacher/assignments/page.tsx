@@ -5,10 +5,20 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 
 const subjects = ["Physics", "Mathematics", "Chemistry", "Computer Science", "History"];
 
 export default function AssignmentsPage() {
+    const { toast } = useToast();
+    
+    const handlePublish = () => {
+        toast({
+            title: "Assignment Published",
+            description: "The assignment has been made available to students.",
+        });
+    }
+
     return (
         <Card>
             <CardHeader>
@@ -35,7 +45,7 @@ export default function AssignmentsPage() {
                     <Label>Assignment Questions</Label>
                     <Textarea placeholder="1. Explain Newton's laws of motion..." className="min-h-[200px]" />
                 </div>
-                <Button>Publish Assignment</Button>
+                <Button onClick={handlePublish}>Publish Assignment</Button>
             </CardContent>
         </Card>
     );
