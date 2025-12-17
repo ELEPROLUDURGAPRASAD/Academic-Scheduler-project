@@ -29,14 +29,13 @@ const exampleDates: MarkedDate[] = [
     { date: new Date(2025, 3, 18), type: 'holiday', description: 'Good Friday' },
     { date: new Date(2025, 5, 7), type: 'holiday', description: 'Bakrid / Eid al Adha' },
     { date: new Date(2024, 7, 15), type: 'holiday', description: 'Independence Day' },
-    { date: new Date(2024, 7, 16), type: 'holiday', description: 'Janmashtami' }, // Assuming Janmashtami is Aug 16, 2024 (user mentioned Aug 16)
-    { date: new Date(2024, 9, 2), type: 'holiday', description: 'Gandhi Jayanti / Vijaya Dashami' },
-    { date: new Date(2024, 9, 20), type: 'holiday', description: 'Diwali / Deepavali' },
-    { date: new Date(2024, 9, 21), type: 'holiday', description: 'Diwali Holiday' },
-    { date: new Date(2024, 10, 5), type: 'holiday', description: 'Guru Nanak Jayanti' },
+    { date: new Date(2024, 7, 26), type: 'holiday', description: 'Janmashtami' },
+    { date: new Date(2024, 9, 2), type: 'holiday', description: 'Gandhi Jayanti' },
+    { date: new Date(2024, 9, 12), type: 'holiday', description: 'Vijaya Dashami' },
+    { date: new Date(2024, 10, 1), type: 'holiday', description: 'Diwali / Deepavali' },
+    { date: new Date(2024, 10, 15), type: 'holiday', description: 'Guru Nanak Jayanti' },
     { date: new Date(2024, 11, 25), type: 'holiday', description: 'Christmas Day' },
-    { date: new Date(2024, 11, 26), type: 'holiday', description: 'Boxing Day' },
-
+    
     // Existing Events
     { date: new Date(2024, 8, 5), type: 'event', description: 'Teachers\' Day' },
     { date: new Date(2024, 9, 25), type: 'event', description: 'Tech Fest' },
@@ -98,11 +97,7 @@ export default function CalendarPage() {
                                 <h2 className="text-xl font-semibold">{format(currentMonth, 'MMMM yyyy')}</h2>
                                 <Button variant="ghost" size="icon" onClick={() => changeMonth(1)}><ChevronRight /></Button>
                             </div>
-                            <DialogTrigger asChild>
-                                <Button className="h-10 w-10 rounded-full shadow-lg" size="icon">
-                                    <Plus className="h-6 w-6" />
-                                </Button>
-                            </DialogTrigger>
+                           
                         </div>
                         <div className="flex gap-2 overflow-x-auto py-2">
                             {allMonths.map(month => (
@@ -165,6 +160,12 @@ export default function CalendarPage() {
                         </div>
                     </CardContent>
                 </Card>
+
+                 <DialogTrigger asChild>
+                    <Button className="h-14 w-14 rounded-full shadow-lg absolute bottom-8 right-8" size="icon">
+                        <Plus className="h-8 w-8" />
+                    </Button>
+                </DialogTrigger>
 
                 <DialogContent>
                     <DialogHeader>
