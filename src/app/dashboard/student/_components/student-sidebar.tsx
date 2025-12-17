@@ -39,7 +39,7 @@ export function StudentSidebarNav() {
             <SidebarGroupLabel>Teacher Section</SidebarGroupLabel>
             <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/assignments')}>
-                <Link href="/dashboard/teacher/assignments"><FileText /> Assignments</Link>
+                <Link href="/dashboard/student/assignments"><FileText /> Assignments</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
@@ -49,7 +49,7 @@ export function StudentSidebarNav() {
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/submissions')}>
-                <Link href="/dashboard/teacher/submissions"><CalendarClock /> Submission Dates</Link>
+                <Link href="/dashboard/student/submissions"><CalendarClock /> Submission Dates</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarGroup>

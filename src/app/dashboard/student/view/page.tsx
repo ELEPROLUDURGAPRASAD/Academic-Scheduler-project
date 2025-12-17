@@ -122,9 +122,9 @@ export default function StudentViewPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/teacher/assignments"><FileText className="mr-2 h-4 w-4" /> View Assignments</Link></Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/student/assignments"><FileText className="mr-2 h-4 w-4" /> View Assignments</Link></Button>
                         <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/student/notes"><Upload className="mr-2 h-4 w-4" /> Download Notes</Link></Button>
-                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/teacher/submissions"><CalendarClock className="mr-2 h-4 w-4" /> View Submission Dates</Link></Button>
+                        <Button asChild variant="secondary" className="w-full justify-start"><Link href="/dashboard/student/submissions"><CalendarClock className="mr-2 h-4 w-4" /> View Submission Dates</Link></Button>
                     </CardContent>
                 </Card>
             </div>
