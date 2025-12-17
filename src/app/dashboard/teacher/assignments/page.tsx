@@ -20,8 +20,8 @@ const exampleQuestions: Record<string, string> = {
 
 export default function AssignmentsPage() {
     const { toast } = useToast();
-    const [selectedSubject, setSelectedSubject] = useState('');
-    const [assignmentText, setAssignmentText] = useState('');
+    const [selectedSubject, setSelectedSubject] = useState('Chemistry');
+    const [assignmentText, setAssignmentText] = useState(exampleQuestions['Chemistry']);
 
     const handleSubjectChange = (subject: string) => {
         setSelectedSubject(subject);
@@ -44,14 +44,14 @@ export default function AssignmentsPage() {
     }
 
     return (
-        <Card>
+        <Card className="max-w-2xl mx-auto">
             <CardHeader>
                 <CardTitle>Create Assignment</CardTitle>
                 <CardDescription>
                     Select your subject and write the assignment questions below.
                 </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
                 <div className="space-y-2">
                     <Label>Subject</Label>
                     <Select onValueChange={handleSubjectChange} value={selectedSubject}>
@@ -68,13 +68,13 @@ export default function AssignmentsPage() {
                 <div className="space-y-2">
                     <Label>Assignment Questions</Label>
                     <Textarea 
-                        placeholder="1. Explain..." 
-                        className="min-h-[200px]" 
+                        placeholder="1. ..."
+                        className="min-h-[150px] text-base" 
                         value={assignmentText}
                         onChange={(e) => setAssignmentText(e.target.value)}
                     />
                 </div>
-                <Button onClick={handlePublish}>Publish Assignment</Button>
+                <Button onClick={handlePublish} size="lg">Publish Assignment</Button>
             </CardContent>
         </Card>
     );
