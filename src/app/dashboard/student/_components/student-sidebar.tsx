@@ -38,17 +38,17 @@ export function StudentSidebarNav() {
         <SidebarGroup>
             <SidebarGroupLabel>Teacher Section</SidebarGroupLabel>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/assignments')}>
                 <Link href="/dashboard/teacher/assignments"><FileText /> Assignments</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                <Link href="/dashboard/teacher/notes"><Upload /> Notes PDFs</Link>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/notes')}>
+                <Link href="/dashboard/student/notes"><Upload /> Notes PDFs</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard/student/submissions')}>
                 <Link href="/dashboard/teacher/submissions"><CalendarClock /> Submission Dates</Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
