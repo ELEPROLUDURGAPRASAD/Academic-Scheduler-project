@@ -40,7 +40,7 @@ export default function CalendarPage() {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const [description, setDescription] = useState('');
     const [markedDates, setMarkedDates] = useState<MarkedDate[]>(exampleDates);
-    const [currentMonth, setCurrentMonth] = useState(new Date());
+    const [currentMonth, setCurrentMonth] = useState(startOfMonth(new Date(2024, 7, 1)));
     
     const addMarker = (type: 'holiday' | 'event') => {
         if (date && description) {
@@ -129,7 +129,6 @@ export default function CalendarPage() {
                             <div className="space-y-4">
                                 {markedDates.length > 0 ? (
                                     markedDates
-                                        .filter(d => d.date >= new Date())
                                         .sort((a, b) => a.date.getTime() - b.date.getTime())
                                         .map((d, i) => (
                                         <div key={i} className="flex items-center justify-between">
