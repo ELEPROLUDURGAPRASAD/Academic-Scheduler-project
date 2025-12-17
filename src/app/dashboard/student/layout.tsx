@@ -1,3 +1,5 @@
+"use client";
+
 import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
 import { StudentSidebarNav } from "./_components/student-sidebar";
 
