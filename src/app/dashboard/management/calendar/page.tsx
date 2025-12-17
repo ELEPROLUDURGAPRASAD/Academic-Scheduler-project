@@ -80,76 +80,76 @@ export default function CalendarPage() {
 
     return (
         <div className="relative">
-             <Card className="w-full bg-card text-card-foreground">
-                <CardHeader className="p-4">
-                    <div className="flex items-center justify-between">
-                         <div className="flex items-center gap-4">
-                            <Button variant="ghost" size="icon" onClick={() => changeMonth(-1)}><ChevronLeft /></Button>
-                            <h2 className="text-xl font-semibold">{format(currentMonth, 'MMMM yyyy')}</h2>
-                            <Button variant="ghost" size="icon" onClick={() => changeMonth(1)}><ChevronRight /></Button>
+             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <Card className="w-full bg-card text-card-foreground">
+                    <CardHeader className="p-4">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                                <Button variant="ghost" size="icon" onClick={() => changeMonth(-1)}><ChevronLeft /></Button>
+                                <h2 className="text-xl font-semibold">{format(currentMonth, 'MMMM yyyy')}</h2>
+                                <Button variant="ghost" size="icon" onClick={() => changeMonth(1)}><ChevronRight /></Button>
+                            </div>
                         </div>
-                    </div>
-                     <div className="flex gap-2 overflow-x-auto py-2">
-                        {allMonths.map(month => (
-                            <Button
-                                key={month.toString()}
-                                variant={format(month, 'MMM') === format(currentMonth, 'MMM') ? 'secondary' : 'ghost'}
-                                className="px-4 py-1 h-auto"
-                                onClick={() => setCurrentMonth(month)}
-                            >
-                                {format(month, 'MMM')}
-                            </Button>
-                        ))}
-                    </div>
-                </CardHeader>
-                <CardContent className="p-0">
-                    <div className="grid grid-cols-7 text-center text-xs font-medium text-muted-foreground border-b">
-                        {weekDays.map(day => <div key={day} className="py-2">{day}</div>)}
-                    </div>
-                    <div className="grid grid-cols-7">
-                        {days.map((day) => {
-                            const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
-                            const isToday = format(day, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd');
-                            const marks = markedDates.filter(d => format(d.date, 'yyyy-MM-dd') === format(day, 'yyyy-MM-dd'));
-
-                            return (
-                                <div
-                                    key={day.toString()}
-                                    className={cn(
-                                        "relative h-28 border-r border-b p-1 text-sm flex flex-col items-start cursor-pointer transition-colors hover:bg-accent",
-                                        !isCurrentMonth && "text-muted-foreground/50",
-                                        "last:border-r-0"
-                                    )}
-                                    onClick={() => handleDateClick(day)}
+                        <div className="flex gap-2 overflow-x-auto py-2">
+                            {allMonths.map(month => (
+                                <Button
+                                    key={month.toString()}
+                                    variant={format(month, 'MMM') === format(currentMonth, 'MMM') ? 'secondary' : 'ghost'}
+                                    className="px-4 py-1 h-auto"
+                                    onClick={() => setCurrentMonth(month)}
                                 >
-                                    <span className={cn(
-                                        "w-7 h-7 flex items-center justify-center rounded-full",
-                                        isToday && "bg-primary text-primary-foreground"
-                                    )}>
-                                        {format(day, 'd')}
-                                    </span>
-                                     <div className="flex flex-col gap-1 mt-1 overflow-y-auto w-full text-xs">
-                                        {marks.map((mark, i) => (
-                                            <Badge
-                                                key={i}
-                                                variant={mark.type === 'holiday' ? 'destructive' : 'default'}
-                                                className={cn(
-                                                    "truncate text-white",
-                                                    mark.type === 'event' && "bg-blue-500",
-                                                )}
-                                            >
-                                                {mark.description}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </CardContent>
-            </Card>
+                                    {format(month, 'MMM')}
+                                </Button>
+                            ))}
+                        </div>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                        <div className="grid grid-cols-7 text-center text-xs font-medium text-muted-foreground border-b">
+                            {weekDays.map(day => <div key={day} className="py-2">{day}</div>)}
+                        </div>
+                        <div className="grid grid-cols-7">
+                            {days.map((day) => {
+                                const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
+                                const isToday = format(day, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd');
+                                const marks = markedDates.filter(d => format(d.date, 'yyyy-MM-dd') === format(day, 'yyyy-MM-dd'));
 
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                                return (
+                                    <div
+                                        key={day.toString()}
+                                        className={cn(
+                                            "relative h-28 border-r border-b p-1 text-sm flex flex-col items-start cursor-pointer transition-colors hover:bg-accent",
+                                            !isCurrentMonth && "text-muted-foreground/50",
+                                            "last:border-r-0"
+                                        )}
+                                        onClick={() => handleDateClick(day)}
+                                    >
+                                        <span className={cn(
+                                            "w-7 h-7 flex items-center justify-center rounded-full",
+                                            isToday && "bg-primary text-primary-foreground"
+                                        )}>
+                                            {format(day, 'd')}
+                                        </span>
+                                        <div className="flex flex-col gap-1 mt-1 overflow-y-auto w-full text-xs">
+                                            {marks.map((mark, i) => (
+                                                <Badge
+                                                    key={i}
+                                                    variant={mark.type === 'holiday' ? 'destructive' : 'default'}
+                                                    className={cn(
+                                                        "truncate text-white",
+                                                        mark.type === 'event' && "bg-blue-500",
+                                                    )}
+                                                >
+                                                    {mark.description}
+                                                </Badge>
+                                            ))}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </CardContent>
+                </Card>
+
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Mark Date</DialogTitle>
@@ -170,7 +170,7 @@ export default function CalendarPage() {
                         </div>
                     </div>
                     <DialogFooter className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                         <Button variant="destructive" onClick={removeMarker} disabled={!selectedDate || !markedDates.some(d => format(d.date, 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd'))} className="sm:col-span-1">
+                        <Button variant="destructive" onClick={removeMarker} disabled={!selectedDate || !markedDates.some(d => format(d.date, 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd'))} className="sm:col-span-1">
                             Remove
                         </Button>
                         <div className="sm:col-span-2 grid grid-cols-2 gap-2">
@@ -183,13 +183,13 @@ export default function CalendarPage() {
                         </div>
                     </DialogFooter>
                 </DialogContent>
-            </Dialog>
 
-            <DialogTrigger asChild>
-                 <Button className="absolute bottom-8 right-8 h-14 w-14 rounded-full shadow-lg" onClick={() => handleDateClick(new Date())}>
-                    <Plus className="h-8 w-8" />
-                </Button>
-            </DialogTrigger>
+                <DialogTrigger asChild>
+                    <Button className="absolute bottom-8 right-8 h-14 w-14 rounded-full shadow-lg" onClick={() => handleDateClick(new Date())}>
+                        <Plus className="h-8 w-8" />
+                    </Button>
+                </DialogTrigger>
+            </Dialog>
         </div>
     );
 }
