@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { addDays, format, startOfMonth, eachDayOfInterval, startOfWeek, endOfWeek, endOfMonth } from 'date-fns';
+import { addDays, format, startOfMonth, eachDayOfInterval, startOfWeek, endOfWeek, endOfMonth, getDay } from 'date-fns';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input";
@@ -126,6 +126,7 @@ export default function CalendarPage() {
                             {days.map((day) => {
                                 const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
                                 const isToday = format(day, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd');
+                                const isSunday = getDay(day) === 0;
                                 const marks = markedDates.filter(d => format(d.date, 'yyyy-MM-dd') === format(day, 'yyyy-MM-dd'));
 
                                 return (
@@ -140,7 +141,8 @@ export default function CalendarPage() {
                                     >
                                         <span className={cn(
                                             "w-7 h-7 flex items-center justify-center rounded-full",
-                                            isToday && "bg-primary text-primary-foreground"
+                                            isToday && "bg-primary text-primary-foreground",
+                                            isSunday && isCurrentMonth && "text-destructive"
                                         )}>
                                             {format(day, 'd')}
                                         </span>
